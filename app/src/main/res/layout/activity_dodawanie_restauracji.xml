@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.malami.przewodnikkulinarny.DodawanieRestauracji">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#3399FF"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Dodaj restauracje"
+        />
+
+
+    <EditText
+        android:id="@+id/Nazwa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nazwa restauracji"
+        tools:layout_editor_absoluteY="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginStart="16dp" />
+
+    <EditText
+        android:id="@+id/adres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Adres"
+        tools:layout_editor_absoluteY="110dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="146dp"
+        android:layout_marginStart="16dp" />
+
+    <EditText
+        android:id="@+id/Szerokosc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Szerokosc"
+        tools:layout_editor_absoluteY="182dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="218dp"
+        android:layout_marginStart="16dp" />
+
+    <EditText
+        android:id="@+id/Dlugosc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Długość"
+        tools:layout_editor_absoluteY="254dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginStart="16dp" />
+
+    <Button
+        android:id="@+id/DodajRestauracje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="190dp"
+        android:text="Dodaj"
+
+        android:onClick="dodajRestauracje"/>
+
+
+
+
+</RelativeLayout>

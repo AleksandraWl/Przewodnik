@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context="com.example.malami.przewodnikkulinarny.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Lubelski przewodnik kulinarny" />
+
+    <Button
+        android:id="@+id/zaloguj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:onClick="login"
+        android:text="logowanie" />
+
+    <Button
+        android:id="@+id/rejestruj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zaloguj"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:onClick="rejestruj"
+        android:text="rejestracja" />
+
+    <Button
+        android:id="@+id/Anonimowo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="380dp"
+
+        android:layout_marginEnd="16dp"
+        android:onClick="Anonimowo"
+        android:text="Anonim"
+        tools:ignore="OnClick"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <Button
+        android:id="@+id/mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Anonimowo"
+        android:layout_alignStart="@+id/Anonimowo"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="192dp"
+        android:onClick="mapa"
+        android:text="Mapa" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="194dp"
+        android:layout_height="129dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="109dp"
+        android:src="@drawable/ic_launcher"
+        tools:srcCompat="@drawable/ic_launcher" />
+
+</RelativeLayout>

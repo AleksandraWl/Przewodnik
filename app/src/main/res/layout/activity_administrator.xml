@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.malami.przewodnikkulinarny.administrator"
+    >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#3399FF"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Ustawienia administratora"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Administrator"
+        tools:layout_editor_absoluteY="40dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginStart="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dodajAdministratora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:onClick="dodajAdministratora"
+            android:text="Dodaj administratora"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <Button
+            android:id="@+id/usunAdministratora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="100dp"
+            tools:layout_editor_absoluteY="50dp"
+            android:text="Usuń administratora"
+            android:onClick="usunAdministratora"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategoria"
+        tools:layout_editor_absoluteY="40dp"
+        android:layout_marginTop="174dp"
+        android:layout_marginStart="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/DodajKategorie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:onClick="dodawanieKategorii"
+            android:text="Dodaj kategorie" />
+
+        <Button
+            android:id="@+id/UsunKategorie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            android:text="usuń kategorie" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restauracja"
+        tools:layout_editor_absoluteY="40dp"
+        android:layout_marginTop="274dp"
+        android:layout_marginStart="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/DodajRestauracje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="300dp"
+            tools:layout_editor_absoluteY="169dp"
+            android:layout_weight="1"
+            android:text="Dodaj restauracje"
+            android:onClick="DodajRestauracje"/>
+
+        <Button
+            android:id="@+id/UsunRestauracje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="300dp"
+            android:layout_weight="1"
+            android:text="Usuń restauracje"
+            tools:layout_editor_absoluteY="169dp" />
+    </LinearLayout>
+
+</RelativeLayout>
