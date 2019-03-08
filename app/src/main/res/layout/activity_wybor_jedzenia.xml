@@ -4,42 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context="com.example.malami.przewodnikkulinarny.WyborJedzenia">
 
 
-    <Button
-        android:id="@+id/Mapa"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="277dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="mapa"
-        android:text="Pokaż na mapie"
-        tools:layout_editor_absoluteY="241dp" />
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/MenuRestauracji"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="menu"
-        android:text="Menu" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="66dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20dp"
+                android:text="Wybierz restauracje" />
 
 
-    <Spinner
+            <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:layout_editor_absoluteY="50dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="74dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"/>
 
+            <Button
+                android:id="@+id/Mapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/cardview_shadow_start_color"
+                android:onClick="mapa"
+                android:text="Pokaż na mapie"/>
+
+            <Button
+                android:id="@+id/zatwierdź"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/cardview_shadow_start_color"
+                android:onClick="zatwierdz"
+                android:text="Kontakt" />
+
+
+            <Button
+                android:id="@+id/MenuRestauracji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="6dp"
+
+                android:background="@color/cardview_shadow_start_color"
+                android:onClick="menu"
+                android:text="Menu" />
+        </LinearLayout>
+    </ScrollView>
 
 
     <android.support.v7.widget.Toolbar
@@ -48,22 +86,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="#3399FF"
         android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
         app:title="Menu" />
 
-
-    <Button
-        android:id="@+id/zatwierdź"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="169dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="205dp"
-        android:layout_marginStart="16dp"
-        android:onClick="zatwierdz"
-        android:text="Zatwierdź"
-         />
 
     <TextView
         android:id="@+id/Adres"
@@ -84,8 +110,8 @@
         android:layout_marginStart="54dp"
         android:layout_marginBottom="161dp"
         android:text="TextView"
-        android:textSize="15dp"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/dlugosc"

@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.Map;
 
 public class MenuRestauracji extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class MenuRestauracji extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ArrayList<String> list = new ArrayList<>();
     private ListView listView;
+    DatabaseReference dr;
     menuR menu;
 
     @Override
@@ -132,9 +134,37 @@ public class MenuRestauracji extends AppCompatActivity {
     }
 
     private void Wybierz() {
-        
-         Toast.makeText(this, "Wybrano : " +  nazwa, Toast.LENGTH_LONG).show();
-    }
+        genere = spinner.getSelectedItem().toString();
+
+        dr.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //These are all of your children.
+                Map<String, Object> lubna = (Map<String, Object>) dataSnapshot.getValue();
+
+                for (String childKey : lubna.keySet()) {
+                    if (genere.equals("Restauracje")) {
+                    } else if (childKey.equals(genere)) {
+                        //childKey is your "-LQka.. and so on"
+                        //Your current object holds all the variables in your picture.
+                        Map<String, Object> currentLubnaObject = (Map<String, Object>) lubna.get(childKey);
+
+                        String danie = (String) currentLubnaObject.get("nazwa");
+
+
+                    }
+                    //You can access each variable like so: String variableName = (String) currentLubnaObject.get("INSERT_VARIABLE_HERE"); //data, description, taskid, time, title
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        }); }
+
 
     private ArrayList<String> fetchData() {
         lista.clear();

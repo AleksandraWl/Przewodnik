@@ -233,8 +233,11 @@ public class WyborJedzenia extends AppCompatActivity {
                 //These are all of your children.
                 Map<String, Object> lubna = (Map<String, Object>) dataSnapshot.getValue();
 
+
                 for (String childKey : lubna.keySet()) {
-                    if (childKey.equals(genere)) {
+                    if (genere.equals("Restauracje")) {
+                        adres.setText("Wybierz restauracje");
+                    } else if (childKey.equals(genere)) {
                         //childKey is your "-LQka.. and so on"
                         //Your current object holds all the variables in your picture.
                         Map<String, Object> currentLubnaObject = (Map<String, Object>) lubna.get(childKey);
@@ -247,120 +250,99 @@ public class WyborJedzenia extends AppCompatActivity {
                     //You can access each variable like so: String variableName = (String) currentLubnaObject.get("INSERT_VARIABLE_HERE"); //data, description, taskid, time, title
                 }
 
-                f_szerokosc = Double.parseDouble(szerokosc);
-                f_dlugosc = Double.parseDouble(dlugosc);
-                s.setText(f_szerokosc + "");
-                d.setText(f_dlugosc + "");
+                if (!genere.equals("Restauracje")) {
+                    f_szerokosc = Double.parseDouble(szerokosc);
+                    f_dlugosc = Double.parseDouble(dlugosc);
+                    s.setText(f_szerokosc + "");
+                    d.setText(f_dlugosc + "");
 
-                String textSzerokosc = s.getText().toString();
-                FileOutputStream fosSzer = null;
-                try {
-                    fosSzer = openFileOutput(FileNameSzerokosc, MODE_PRIVATE);
-                    fosSzer.write(textSzerokosc.getBytes());
-                    Toast.makeText(WyborJedzenia.this, "Save", Toast.LENGTH_SHORT).show();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (fosSzer != null) {
-                        try {
-                            fosSzer.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    String textSzerokosc = s.getText().toString();
+                    FileOutputStream fosSzer = null;
+                    try {
+                        fosSzer = openFileOutput(FileNameSzerokosc, MODE_PRIVATE);
+                        fosSzer.write(textSzerokosc.getBytes());
+                        Toast.makeText(WyborJedzenia.this, "Save", Toast.LENGTH_SHORT).show();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fosSzer != null) {
+                            try {
+                                fosSzer.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                }
 
 
-               /* FileInputStream FisSzer = null;
-                try {
-                    FisSzer = openFileInput(FileNameSzerokosc);
-                    InputStreamReader isr = new InputStreamReader(FisSzer);
-                    BufferedReader br = new BufferedReader(isr);
-                    StringBuilder sb = new StringBuilder();
-                    String text;
-
-                    while ((text = br.readLine())!= null){
-                        sb.append(text).append("\n");
+                    String textDlugosc = d.getText().toString();
+                    FileOutputStream fosDlu = null;
+                    try {
+                        fosDlu = openFileOutput(FileNameDlugosc, MODE_PRIVATE);
+                        fosDlu.write(textDlugosc.getBytes());
+                        Toast.makeText(WyborJedzenia.this, "Save", Toast.LENGTH_SHORT).show();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    text= sb.toString();
-                 cos=Double.parseDouble(text);
-                    d.setText(cos+"");
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-*/
 
 
-                String textDlugosc = d.getText().toString();
-                FileOutputStream fosDlu = null;
-                try {
-                    fosDlu = openFileOutput(FileNameDlugosc, MODE_PRIVATE);
-                    fosDlu.write(textDlugosc.getBytes());
-                    Toast.makeText(WyborJedzenia.this, "Save", Toast.LENGTH_SHORT).show();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    s.setText(Nazwa);
+                    d.setText(Adres);
 
-
-                s.setText(Nazwa);
-                d.setText(Adres);
-
-                String textNazwa = s.getText().toString();
-                FileOutputStream fosNa = null;
-                try {
-                    fosNa = openFileOutput(FileNameNazwa, MODE_PRIVATE);
-                    fosNa.write(textNazwa.getBytes());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (fosNa != null) {
-                        try {
-                            fosNa.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    String textNazwa = s.getText().toString();
+                    FileOutputStream fosNa = null;
+                    try {
+                        fosNa = openFileOutput(FileNameNazwa, MODE_PRIVATE);
+                        fosNa.write(textNazwa.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fosNa != null) {
+                            try {
+                                fosNa.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                }
 
-                String textAdres = d.getText().toString();
-                FileOutputStream fosAd = null;
-                try {
-                    fosAd = openFileOutput(FileNameAdres, MODE_PRIVATE);
-                    fosAd.write(textAdres.getBytes());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (fosAd != null) {
-                        try {
-                            fosAd.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    String textAdres = d.getText().toString();
+                    FileOutputStream fosAd = null;
+                    try {
+                        fosAd = openFileOutput(FileNameAdres, MODE_PRIVATE);
+                        fosAd.write(textAdres.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fosAd != null) {
+                            try {
+                                fosAd.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
+
+
+                    Intent i = new Intent(WyborJedzenia.this, MapsActivity.class);
+                    startActivity(i);
                 }
-
-
-                Intent i = new Intent(WyborJedzenia.this, MapsActivity.class);
-                startActivity(i);
             }
-
 
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
+
 //
 
 
