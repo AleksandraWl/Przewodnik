@@ -71,7 +71,7 @@ public class MenuRestauracji extends AppCompatActivity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-    }
+        }
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Menu").child(nazwa);
         //lubnaRef = mDatabase.child("Menu").child(nazwa);
@@ -152,6 +152,7 @@ public class MenuRestauracji extends AppCompatActivity {
                         String danie = (String) currentLubnaObject.get("nazwa");
 
 
+
                     }
                     //You can access each variable like so: String variableName = (String) currentLubnaObject.get("INSERT_VARIABLE_HERE"); //data, description, taskid, time, title
                 }
@@ -169,14 +170,14 @@ public class MenuRestauracji extends AppCompatActivity {
     private ArrayList<String> fetchData() {
         lista.clear();
         lista.add("Restauracje");
-       //final int i=0;
+        //final int i=0;
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     menuR res = ds.getValue(menuR.class);
-                   // n=res.getCena();
+                    // n=res.getCena();
                     lista.add(res.getNazwa());
                     //  Toast.makeText(this, ds+"", Toast.LENGTH_LONG).show();
 

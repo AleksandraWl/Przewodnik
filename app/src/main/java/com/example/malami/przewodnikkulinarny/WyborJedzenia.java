@@ -1,6 +1,8 @@
 package com.example.malami.przewodnikkulinarny;
 
 import android.Manifest;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -180,10 +182,7 @@ public class WyborJedzenia extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.wyloguj:
-                Intent i = new Intent(WyborJedzenia.this, Logowanie.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
-                finish();
+                wylogowanie();
 
         }
 
@@ -209,7 +208,10 @@ public class WyborJedzenia extends AppCompatActivity {
                         Map<String, Object> currentLubnaObject = (Map<String, Object>) lubna.get(childKey);
 
                         String adresRes = (String) currentLubnaObject.get("adres");
-                        adres.setText(adresRes);
+                        String Telefon = (String) currentLubnaObject.get("telefon");
+                        String email= (String)currentLubnaObject.get("email");
+                        String godziny= (String)currentLubnaObject.get("otwarcie");
+                        kontakt(genere, adresRes, Telefon,godziny,email);
 
                     }
                     //You can access each variable like so: String variableName = (String) currentLubnaObject.get("INSERT_VARIABLE_HERE"); //data, description, taskid, time, title
@@ -224,6 +226,37 @@ public class WyborJedzenia extends AppCompatActivity {
 
 
     }
+
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(),
+                message,
+                Toast.LENGTH_LONG).show();
+    }
+
+
+    private void kontakt(String nazwa,String adres, String telefon, String godziny, String email) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle(nazwa);
+        final String[] options = {"Godziny otwarcia: " + godziny, "Adres: "+ adres, "Telefon: "+telefon, "E-mail: "+email
+        };
+        dialogBuilder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.setPositiveButton("Ok", new Dialog.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+
+        dialogBuilder.create();
+        dialogBuilder.show();
+    }
+
 
     public void mapa(View view) {
         genere = spinner.getSelectedItem().toString();
@@ -366,9 +399,10 @@ public class WyborJedzenia extends AppCompatActivity {
                 Map<String, Object> lubna = (Map<String, Object>) dataSnapshot.getValue();
 
                 for (String childKey : lubna.keySet()) {
-                    if (childKey.equals(genere)) {
-                        //childKey is your "-LQka.. and so on"
-                        //Your current object holds all the variables in your picture.
+                    if (genere.equals("Restauracje")) {
+                        adres.setText("Wybierz restauracje");
+                    } else if (childKey.equals(genere))
+                    {
                         Map<String, Object> currentLubnaObject = (Map<String, Object>) lubna.get(childKey);
 
                         szerokosc = (String) currentLubnaObject.get("szerokosc");
@@ -381,29 +415,30 @@ public class WyborJedzenia extends AppCompatActivity {
 
                 s.setText(Nazwa);
 
-                String textNazwa = s.getText().toString();
-                FileOutputStream fosNa = null;
-                try {
-                    fosNa = openFileOutput(FileNameNazwa, MODE_PRIVATE);
-                    fosNa.write(textNazwa.getBytes());
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (fosNa != null) {
-                        try {
-                            fosNa.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                if(!genere.equals("Restauracje")) {
+                    String textNazwa = s.getText().toString();
+                    FileOutputStream fosNa = null;
+                    try {
+                        fosNa = openFileOutput(FileNameNazwa, MODE_PRIVATE);
+                        fosNa.write(textNazwa.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (fosNa != null) {
+                            try {
+                                fosNa.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
+
+
+                    Intent i = new Intent(WyborJedzenia.this, MenuRestauracji.class);
+                    startActivity(i);
                 }
-
-
-
-                Intent i = new Intent(WyborJedzenia.this, MenuRestauracji.class);
-                startActivity(i);
             }
 
 
@@ -412,5 +447,30 @@ public class WyborJedzenia extends AppCompatActivity {
             }
         });
     }
+
+    private void wylogowanie() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Wyjście");
+        dialogBuilder.setMessage("Czy napewno?");
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.setPositiveButton("Tak", new Dialog.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                showToast("Wychodzę");
+                finish();
+            }
+        });
+        dialogBuilder.setNegativeButton("Nie", new Dialog.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int whichButton) {
+                showToast("Anulowano");
+
+            }
+        });
+        dialogBuilder.create();
+        dialogBuilder.show();
+    }
+
+
 }
 
